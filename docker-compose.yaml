@@ -1,0 +1,25 @@
+# Local verification for REA-566: a Grafana instance with this plugin
+# installed unsigned (GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS), provisioned
+# with a RealUptime data source and the starter dashboard.
+#
+#   pnpm --filter realuptime-monitor-datasource build
+#   REALUPTIME_BASE_URL=https://api.realuptime.io REALUPTIME_API_KEY=ru_live_... \
+#     docker compose -f packages/grafana-datasource/docker-compose.yaml up
+#
+# Then open http://localhost:3000 (default admin/admin) -> Dashboards ->
+# RealUptime -> "RealUptime Monitor", or Connections -> Data sources ->
+# RealUptime Monitor to confirm "Save & test" reaches the real account.
+services:
+  grafana:
+    image: grafana/grafana:11.3.0
+    ports:
+      - "3000:3000"
+    environment:
+      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: realuptime-monitor-datasource
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      REALUPTIME_BASE_URL: ${REALUPTIME_BASE_URL:-https://api.realuptime.io}
+      REALUPTIME_API_KEY: ${REALUPTIME_API_KEY:-}
+    volumes:
+      - ./dist:/var/lib/grafana/plugins/realuptime-monitor-datasource
+      - ./provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./provisioning/dashboards:/etc/grafana/provisioning/dashboards

@@ -1,0 +1,14 @@
+apiVersion: 1
+
+datasources:
+  - name: RealUptime Monitor
+    type: realuptime-monitor-datasource
+    access: proxy
+    isDefault: false
+    orgId: 1
+    version: 1
+    editable: true
+    jsonData:
+      baseUrl: "${REALUPTIME_BASE_URL}"
+    secureJsonData:
+      apiKey: "${REALUPTIME_API_KEY}"

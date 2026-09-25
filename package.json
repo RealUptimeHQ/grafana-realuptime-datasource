@@ -1,0 +1,48 @@
+{
+  "name": "realuptime-monitor-datasource",
+  "version": "0.1.0",
+  "description": "Official RealUptime Monitor data source plugin for Grafana: panel time series from GET /api/v1/checks/results and outage annotations from GET /api/v1/incidents.",
+  "author": "RealUptime",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "webpack -c ./.config/webpack/webpack.config.mjs --env production",
+    "dev": "webpack -w -c ./.config/webpack/webpack.config.mjs --env development",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@grafana/data": "^13.1.0",
+    "@grafana/runtime": "^13.1.0",
+    "@grafana/schema": "^13.1.0",
+    "@grafana/ui": "^13.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.15.0",
+    "@types/node": "^24.13.6",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "copy-webpack-plugin": "^14.0.0",
+    "glob": "^13.0.6",
+    "imports-loader": "^5.0.0",
+    "replace-in-file-webpack-plugin": "^1.0.0",
+    "swc-loader": "^0.2.0",
+    "terser-webpack-plugin": "^5.3.0",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.1",
+    "webpack": "^5.101.0",
+    "webpack-cli": "^7.2.3",
+    "webpack-subresource-integrity": "^5.1.0",
+    "webpack-virtual-modules": "^0.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RealUptimeHQ/grafana-realuptime-datasource"
+  },
+  "homepage": "https://realuptime.io/docs/api"
+}

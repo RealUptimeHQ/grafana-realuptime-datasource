@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "datasource",
+  "name": "RealUptime Monitor",
+  "id": "realuptime-monitor-datasource",
+  "metrics": true,
+  "annotations": true,
+  "backend": false,
+  "info": {
+    "description": "Query RealUptime Monitor check results (uptime, latency, status code) and incident annotations directly from Grafana.",
+    "author": {
+      "name": "RealUptime",
+      "url": "https://realuptime.io"
+    },
+    "keywords": ["datasource", "uptime", "monitoring", "realuptime", "incidents"],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [
+      { "name": "Website", "url": "https://realuptime.io" },
+      { "name": "API docs", "url": "https://realuptime.io/docs/api" }
+    ],
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "routes": [
+    {
+      "path": "realuptime-api",
+      "url": "{{ .JsonData.baseUrl }}",
+      "headers": [{ "name": "Authorization", "content": "Bearer {{ .SecureJsonData.apiKey }}" }]
+    }
+  ],
+  "dependencies": {
+    "grafanaDependency": ">=10.0.0",
+    "plugins": []
+  }
+}

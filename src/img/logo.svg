@@ -1,0 +1,5 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <title>RealUptime Monitor</title>
+  <circle cx="64" cy="64" r="60" fill="#111827"/>
+  <path d="M32 70 L52 70 L60 46 L70 96 L80 58 L88 70 L96 70" fill="none" stroke="#22C55E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
