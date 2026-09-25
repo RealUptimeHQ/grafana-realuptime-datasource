@@ -74,8 +74,13 @@ export class RealUptimeDataSource extends DataSourceApi<RealUptimeQuery, RealUpt
    * enough, and this file stays free of any `@grafana/ui`/React import.
    * That is not just tidiness: it is what keeps `datasource.ts` importable
    * in a plain Node test environment without dragging in `@grafana/ui`'s
-   * browser-only chart internals (uPlot, `window.grafanaBootData`), which
-   * `QueryEditor.tsx` and its own tests exercise separately.
+   * browser-only chart internals (uPlot, and the global Grafana boot data
+   * that `config` from `@grafana/runtime` reads on module load), which
+   * `QueryEditor.tsx` and its own tests exercise separately. This file
+   * never reads that global itself: any bootstrap info it might ever need
+   * (build info, feature toggles) belongs behind `config` from
+   * `@grafana/runtime`, not a direct `window` property access, which
+   * Grafana's plugin checks reject outright.
    */
   annotations: AnnotationSupport<RealUptimeQuery> = {
     prepareQuery: (annotation: AnnotationQuery<RealUptimeQuery>): RealUptimeQuery => ({

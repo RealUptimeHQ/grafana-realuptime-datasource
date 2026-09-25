@@ -1,6 +1,14 @@
 import type { DataSourcePluginOptionsEditorProps } from "@grafana/data";
 import { Field, Input, SecretInput } from "@grafana/ui";
-import type { ChangeEvent } from "react";
+// The scaffolded webpack build (.config/webpack/webpack.config.ts's
+// swc-loader) compiles JSX with the classic transform, which emits
+// `React.createElement(...)` calls and needs `React` in scope at runtime,
+// not just for types -- omitting this import built and typechecked fine but
+// threw `ReferenceError: React is not defined` the moment Grafana actually
+// rendered this editor (caught by loading it in a real Grafana instance,
+// not just by the build succeeding).
+// biome-ignore lint/correctness/noUnusedImports: React is referenced implicitly by every JSX element below under the classic transform; removing it reintroduces the runtime error above.
+import React, { type ChangeEvent } from "react";
 import { resetApiKey, setApiKey, setBaseUrl } from "../config-editor-logic.ts";
 import type { RealUptimeDataSourceOptions, RealUptimeSecureJsonData } from "../types.ts";
 

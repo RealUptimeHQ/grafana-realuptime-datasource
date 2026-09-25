@@ -1,8 +1,6 @@
 import { describe, expect, it } from "vitest";
 import path from "node:path";
-// @ts-expect-error -- build tooling, deliberately untyped plain .mjs (see the
-// module comment in .config/bundler/utils.mjs for why it is not TypeScript).
-import { getEntries } from "../.config/bundler/utils.mjs";
+import { getEntries } from "../.config/bundler/utils.ts";
 
 // The webpack entry map is the one part of this plugin's build that can fail
 // to nothing. `getEntries()` discovers `src/module.ts` by globbing, and an

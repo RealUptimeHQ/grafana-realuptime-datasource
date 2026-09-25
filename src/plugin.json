@@ -21,7 +21,9 @@
       { "name": "Website", "url": "https://realuptime.io" },
       { "name": "API docs", "url": "https://realuptime.io/docs/api" }
     ],
-    "screenshots": [],
+    "screenshots": [
+      { "name": "Data source config editor", "path": "img/screenshot-config-editor.png" }
+    ],
     "version": "%VERSION%",
     "updated": "%TODAY%"
   },

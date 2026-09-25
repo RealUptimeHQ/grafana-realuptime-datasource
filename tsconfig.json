@@ -1,17 +1,27 @@
 {
+  "extends": "./.config/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2022",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "jsx": "react-jsx",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
+    // "jsx" is inherited as "react" (classic transform) from the scaffolded
+    // base: .config/webpack/webpack.config.ts's swc-loader compiles JSX
+    // that way too (confirmed against a real Grafana instance -- the
+    // automatic runtime's externalized "react/jsx-runtime" entry in
+    // .config/bundler/externals.ts is unused dead weight, not evidence of
+    // which transform actually runs), so every component imports `React`
+    // explicitly; see the comment in ConfigEditor.tsx.
+    //
+    // Source imports its own sibling modules with an explicit ".ts"
+    // extension (e.g. "./annotations.ts"), the shape vitest and Node's ESM
+    // loader both expect; "noEmit" (also set explicitly here, since this is
+    // read directly by `tsc --noEmit` and by editors) is what makes this
+    // option legal.
     "noEmit": true,
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "types": ["node"]
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+    "types": ["node"],
+    // src/build-entries.test.ts imports .config/bundler/utils.ts directly
+    // (the webpack entry-discovery helper it pins the Windows-safe glob fix
+    // for), which is outside the scaffolded base config's "../src" rootDir.
+    // Widening rootDir to the package root keeps that import legal without
+    // touching the "DO NOT EDIT" .config/tsconfig.json.
+    "rootDir": "."
+  }
 }

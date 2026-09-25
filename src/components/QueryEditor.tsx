@@ -1,6 +1,10 @@
 import type { QueryEditorProps, SelectableValue } from "@grafana/data";
 import { AsyncMultiSelect, InlineField, Select, Stack } from "@grafana/ui";
-import { useCallback } from "react";
+// See the comment in ConfigEditor.tsx: the scaffolded webpack build's
+// swc-loader compiles JSX with the classic transform, which needs `React`
+// in scope at runtime.
+// biome-ignore lint/correctness/noUnusedImports: React is referenced implicitly by every JSX element below under the classic transform.
+import React, { useCallback } from "react";
 import type { RealUptimeDataSource } from "../datasource.ts";
 import { LIVE_REGIONS, LIVE_REGION_LABELS } from "../regions.ts";
 import { type Metric, METRIC_LABELS, METRICS, type RealUptimeDataSourceOptions, type RealUptimeQuery } from "../types.ts";

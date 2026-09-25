@@ -10,7 +10,7 @@ reports go to `jose.franco@realuptime.io`.
 <!--
 Maintainer note, not rendered on the catalog page.
 
-This file ships inside the plugin archive (.config/bundler/copyFiles.mjs
+This file ships inside the plugin archive (.config/bundler/copyFiles.ts
 copies it into dist/) and is what the Grafana catalog renders on the
 plugin's page, so every link in it must be publicly reachable: Grafana's
 own `plugincheck2` reports a broken link as a warning on every submission
@@ -24,6 +24,11 @@ scripts/publish-sdk-mirrors.mjs as the thing that
 turns this package into a published plugin. That script mirrors the five
 Errors SDKs only; it has never known about this package, and there is no
 public mirror repo for it. See docs/marketing/directory-listings/grafana-submission.md.
+
+The build tooling moved to Grafana's own `@grafana/create-plugin` scaffold
+on REA-703 (2026-09-25): `.config/bundler` and `.config/webpack` are now
+plain TypeScript, not `.mjs`, matching every other Grafana plugin. See that
+same doc for what changed and why.
 -->
 
 
