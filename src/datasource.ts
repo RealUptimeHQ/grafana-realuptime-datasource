@@ -1,13 +1,13 @@
-import type {
-  AnnotationQuery,
-  AnnotationSupport,
-  CoreApp,
-  DataFrame,
-  DataQueryRequest,
-  DataQueryResponse,
-  DataSourceInstanceSettings,
+import {
+  type AnnotationQuery,
+  type AnnotationSupport,
+  type CoreApp,
+  type DataFrame,
+  type DataQueryRequest,
+  type DataQueryResponse,
+  DataSourceApi,
+  type DataSourceInstanceSettings,
 } from "@grafana/data";
-import { DataSourceApi } from "@grafana/data";
 import { getBackendSrv, isFetchError } from "@grafana/runtime";
 import { lastValueFrom, of } from "rxjs";
 import { buildIncidentsAnnotationFrame, frameToAnnotationEvents, INCIDENTS_ANNOTATION_LIMIT } from "./annotations.ts";

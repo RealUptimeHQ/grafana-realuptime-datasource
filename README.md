@@ -23,7 +23,7 @@ reintroduce it, in prose or in a comment), and a pointer to
 scripts/publish-sdk-mirrors.mjs as the thing that
 turns this package into a published plugin. That script mirrors the five
 Errors SDKs only; it has never known about this package, and there is no
-public mirror repo for it. See docs/marketing/directory-listings/grafana-submission.md.
+public mirror repo for it. Releases are cut by hand; see RELEASING.md.
 
 The build tooling moved to Grafana's own `@grafana/create-plugin` scaffold
 on REA-703 (2026-09-25): `.config/bundler` and `.config/webpack` are now
@@ -79,8 +79,11 @@ the starter dashboard at `provisioning/dashboards/realuptime-monitor.json`.
 ## Tests
 
 ```bash
-pnpm --filter realuptime-monitor-datasource test
+npm install
+npm test
 ```
+
+Inside the source workspace, `pnpm install` and `pnpm test` run the same suite.
 
 Unit tests cover the query-to-API mapping (`query-mapping.test.ts`,
 including the interval-to-step mapping), incident-to-annotation mapping
