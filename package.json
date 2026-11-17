@@ -29,7 +29,7 @@
     "@grafana/eslint-config": "^10.0.0",
     "@grafana/sign-plugin": "^3.3.3",
     "@grafana/tsconfig": "^2.2.0",
-    "@stylistic/eslint-plugin": "^5.10.0",
+    "@stylistic/eslint-plugin": "^6.0.0",
     "@swc/core": "^1.16.21",
     "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
